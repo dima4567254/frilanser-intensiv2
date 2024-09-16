@@ -282,6 +282,83 @@
   }
 }
 
+.cart-header {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  position: relative;
+  z-index: 5;
+
+  // .cart-header__icon
+  &__icon {
+    flex: 0 0 37px;
+    font-size: rem(35);
+    position: relative;
+
+    span {
+      position: absolute;
+      width: rem(14);
+      height: rem(14);
+      background-color: $mainOrange;
+      font-size: rem(7);
+      border-radius: 50%;
+      display: flex;
+      top: 0;
+      right: 0;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  // .cart-header__body
+  &__body {
+    line-height: math.div(20, 16);
+    font-size: rem(16);
+    // flex: 0 0 auto;
+
+    @media (max-width: em(1250)) {
+      display: none;
+    }
+  }
+
+  // .cart-header__summ
+  &__summ {
+    font-weight: 500;
+
+    &:not(:last-child) {
+      margin-bottom: em(5, 16);
+    }
+  }
+
+  // .cart-header__link
+  &__link {
+    color: $mainOrange;
+
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.catalog-header {
+  position: relative;
+  background-color: $mainDarkColor;
+  color: #fff;
+
+  // .catalog-header__container
+  &__container {}
+
+  // .catalog-header__menu
+  &__menu {}
+
+  // @media (max-width: $mobileSmall) {
+  //   padding: rem(20) 0;
+  // }
+}
+
 .menu-catalog {
   // @media (max-width: $tablet) {
   //   position: fixed;
@@ -422,6 +499,8 @@
 
     // .menu-catalog__sub-menu
     &__sub-menu {
+      opacity: 0;
+      visibility: hidden;
       position: absolute; //не было
       width: 100%;
       left: 0;
@@ -451,87 +530,8 @@
   }
 }
 
-
-.cart-header {
-  display: flex;
-  align-items: center;
-  column-gap: 15px;
-  position: relative;
-  z-index: 5;
-
-  // .cart-header__icon
-  &__icon {
-    flex: 0 0 37px;
-    font-size: rem(35);
-    position: relative;
-
-    span {
-      position: absolute;
-      width: rem(14);
-      height: rem(14);
-      background-color: $mainOrange;
-      font-size: rem(7);
-      border-radius: 50%;
-      display: flex;
-      top: 0;
-      right: 0;
-      color: #fff;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  // .cart-header__body
-  &__body {
-    line-height: math.div(20, 16);
-    font-size: rem(16);
-    // flex: 0 0 auto;
-
-    @media (max-width: em(1250)) {
-      display: none;
-    }
-  }
-
-  // .cart-header__summ
-  &__summ {
-    font-weight: 500;
-
-    &:not(:last-child) {
-      margin-bottom: em(5, 16);
-    }
-  }
-
-  // .cart-header__link
-  &__link {
-    color: $mainOrange;
-
-    @media (any-hover: hover) {
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.catalog-header {
-  position: relative;
-  background-color: $mainDarkColor;
-  color: #fff;
-
-  // .catalog-header__container
-  &__container {}
-
-  // .catalog-header__menu
-  &__menu {}
-
-  // @media (max-width: $mobileSmall) {
-  //   padding: rem(20) 0;
-  // }
-}
-
-
 .sub-menu-catalog {
-  padding-bottom: 30px;
+  padding-bottom: rem(30);
   // @media (max-width: $tablet) {
   //   position: fixed;
   //   top: 0;
@@ -579,7 +579,7 @@
     // display: none;
     padding: 0px rem(10); ///отличия
     display: flex;
-    gap: 15px;
+    // gap: 15px;
     justify-content: space-between;
     // @for $var from 1 to 6 {
     //   &_#{$var} {
@@ -599,16 +599,17 @@
 
   &__column {
     flex: 1 1 auto;
-    display: grid;
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
   }
 
   // .sub-menu-catalog__category
   &__category {
+    align-self: flex-start;
     font-size: rem(16);
     line-height: math.div(20, 16);
     font-weight: 700;
-    padding: rem(30) 0px;
+    padding: rem(30) rem(10);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
     @media (any-hover: hover) {
@@ -631,12 +632,13 @@
 
   // .sub-menu-catalog__list
   &__list {
-    display: grid;
-    // flex-direction: column;
+    flex:1 1 auto;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    // padding: rem(30) rem(15) rem(30) 0px;
-    // border-top: 1px solid rgba(255, 255, 255, 0.3);
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: rem(30) rem(10);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
     @media (max-width: $tablet) {
       // display: none;
@@ -674,6 +676,8 @@
 
   // .sub-menu-catalog__all
   &__all {
+    align-self: flex-start;
+    padding: rem(30) rem(10);
     font-size: rem(16);
     color: $mainOrange;
 
